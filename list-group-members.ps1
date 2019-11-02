@@ -22,8 +22,8 @@ foreach ($Group in $YammerGroups) {
     $GroupName = $($Group.full_name)
     $MemberCount = 0
     DO {
-	    $GetMoreMembersUri = "https://www.yammer.com/api/v1/users/in_group/$GroupId.xml?page=$MemberCycle"
-	    write-host ("REST API CALL : $GetMoreMembersUri")
+	$GetMoreMembersUri = "https://www.yammer.com/api/v1/users/in_group/$GroupId.xml?page=$MemberCycle"
+	write-host ("REST API CALL : $GetMoreMembersUri")
         [xml]$Xml = ((Invoke-WebRequest -Uri $GetMoreMembersUri -Method Get -Headers $Headers).content)
         if ($Xml.response.users.user.count -gt 0) {
             $Xml.response.users.SelectNodes("user") | % { 
