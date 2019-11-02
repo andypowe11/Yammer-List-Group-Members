@@ -74,15 +74,5 @@ foreach ($Group in $YammerGroups) {
         }
     }
     While ($Xml.response.users.user.count -gt 0)
-#    DO {
-#        $GetMoreMembersUri = "https://www.yammer.com/api/v1/users/in_group/$GroupId.xml?page=$MemberCycle"
-#        write-host ("REST API CALL : $GetMoreMembersUri")
-#        [xml]$Xml = ((Invoke-WebRequest -Uri $GetMoreMembersUri -Method Get -Headers $Headers).content)
-#        $YammerMembers += $Xml.response.users.user
-#        $MemberCycle ++
-#        $MemberCount += $Xml.response.users.user.count
-#        write-host ("MEMBER COUNT : $MemberCount")
-#    }	
-#    While ($Xml.response.users.user.count -gt 0)
 }
 $YammerMembers | Where {$_} | Export-Csv "all-members.csv" -Delimiter ","
