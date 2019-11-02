@@ -70,7 +70,7 @@ foreach ($Group in $YammerGroups) {
             $YammerMembers += $Xml.response.users.user
             $MemberCycle ++
             $MemberCount += $Xml.response.users.user.count
-	        write-host ("GROUPMEMBER COUNT : $MemberCount")
+	    write-host ("GROUPMEMBER COUNT : $MemberCount")
         }
     }
     While ($Xml.response.users.user.count -gt 0)
